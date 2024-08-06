@@ -47,27 +47,39 @@ export const CreditCard = () => {
   };
 
   return (
-    <Container sx={{ mt: 4 }}>
-      <Typography id="credit-card" variant="h3" textAlign="center" my="50px">
+    <Container sx={{ mt: { xs: 2, sm: 4 }, px: { xs: 2, sm: 4 } }}>
+      <Typography id="credit-card" variant="h3" textAlign="center" my="30px">
         Credit Card Information
       </Typography>
       <Paper
         elevation={6}
-        sx={{ p: 4, maxWidth: "100vh", mx: "auto", backgroundColor: "#EEF5FF" }}
+        sx={{
+          p: { xs: 2, sm: 4 },
+          maxWidth: "100%",
+          mx: "auto",
+          backgroundColor: "#EEF5FF",
+        }}
       >
-        <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            mb: { xs: 2, sm: 4 },
+          }}
+        >
           <Cards
             number={number}
             name={name}
             expiry={expiry}
             cvc={cvc}
             focused={focus}
+            style={{ width: "100%" }}
           />
         </Box>
 
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <TextField
                 label="Cardholder Name"
                 variant="outlined"
@@ -80,7 +92,7 @@ export const CreditCard = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <TextField
                 label="Email"
                 variant="outlined"
@@ -93,7 +105,7 @@ export const CreditCard = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <TextField
                 label="Phone"
                 variant="outlined"
@@ -106,7 +118,7 @@ export const CreditCard = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <TextField
                 label="Card Number"
                 variant="outlined"
@@ -119,7 +131,7 @@ export const CreditCard = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <TextField
                 label="Expiry Date"
                 variant="outlined"
@@ -132,7 +144,7 @@ export const CreditCard = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <TextField
                 label="CVC"
                 variant="outlined"
@@ -145,9 +157,9 @@ export const CreditCard = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12}>
               <Autocomplete
-                sx={{ py: "15px" }}
+                sx={{ py: { xs: 1, sm: 2 } }}
                 blurOnSelect
                 options={Services}
                 value={selectedOption}
@@ -157,7 +169,7 @@ export const CreditCard = () => {
                     {...params}
                     variant="outlined"
                     label="Select Service"
-                    sx={{ width: "18vw" }}
+                    fullWidth
                   />
                 )}
               />

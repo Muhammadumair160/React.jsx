@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Container, TextField, Button, Typography, Box } from "@mui/material";
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Box,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -29,10 +37,13 @@ const ContactUs = () => {
     });
   };
 
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Container
       sx={{
-        my: "10rem",
+        my: isSmallScreen ? "5rem" : "10rem",
         padding: "50px 0",
         textAlign: "center",
         backgroundColor: "#f4f4f9",
@@ -48,6 +59,7 @@ const ContactUs = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          padding: isSmallScreen ? "0 10px" : "0",
         }}
         noValidate
         onSubmit={handleSubmit}

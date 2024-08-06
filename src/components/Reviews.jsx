@@ -8,6 +8,8 @@ import {
   Paper,
   Grid,
   IconButton,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -54,46 +56,63 @@ const reviews = [
 
 const Reviews = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const handlePrevClick = () => {
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? reviews.length - 1 : prevIndex - 1
-      );
-    }, 300);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? reviews.length - 1 : prevIndex - 1
+    );
   };
 
   const handleNextClick = () => {
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === reviews.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 300);
+    setCurrentIndex((prevIndex) =>
+      prevIndex === reviews.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
-  const itemsToShow = 3;
+  const itemsToShow = isSmallScreen ? 1 : isMediumScreen ? 2 : 3;
   const items = reviews.slice(currentIndex, currentIndex + itemsToShow);
 
   return (
-    <Container sx={{ mt: 4, minHeight: "30vh", paddingTop: "30px" }}>
+    <Container
+      sx={{
+        mt: 4,
+        minHeight: "30vh",
+        paddingTop: "30px",
+      }}
+    >
       <Typography variant="h4" textAlign="center" marginBottom="20px">
         Customer Reviews
       </Typography>
-      <Box display="flex" justifyContent="center" alignItems="center">
-        <IconButton onClick={handlePrevClick}>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="row"
+        flexWrap="nowrap"
+      >
+        <IconButton onClick={handlePrevClick} sx={{ mr: 2 }}>
           <ArrowBackIosIcon
             sx={{
               fontSize: "large",
-              marginRight: "16px",
               backgroundColor: "#3FA2F6",
-              borderRadius: "30px",
-              padding: "16px",
+              borderRadius: "50%",
+              padding: "8px",
             }}
           />
         </IconButton>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} justifyContent="center">
           {items.map((review, index) => (
-            <Grid item xs={12} sm={4} key={index}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              key={index}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
               <Paper
                 elevation={3}
                 sx={{
@@ -102,6 +121,7 @@ const Reviews = () => {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  maxWidth: "100%",
                 }}
               >
                 <Box
@@ -129,14 +149,13 @@ const Reviews = () => {
             </Grid>
           ))}
         </Grid>
-        <IconButton onClick={handleNextClick}>
+        <IconButton onClick={handleNextClick} sx={{ ml: 2 }}>
           <ArrowForwardIosIcon
             sx={{
               fontSize: "large",
-              marginLeft: "16px",
               backgroundColor: "#3FA2F6",
-              borderRadius: "30px",
-              padding: "16px",
+              borderRadius: "50%",
+              padding: "8px",
             }}
           />
         </IconButton>

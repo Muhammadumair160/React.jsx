@@ -8,6 +8,7 @@ export const Hero = () => {
       .getElementById("features-section")
       .scrollIntoView({ behavior: "smooth" });
   };
+
   return (
     <Stack
       sx={{
@@ -19,22 +20,26 @@ export const Hero = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: "90px",
+        padding: { xs: "30px", sm: "50px", md: "70px", lg: "90px" },
+        textAlign: { xs: "center", sm: "center", md: "center" },
       }}
     >
       <Typography
         variant="h2"
-        sx={{ fontSize: "5vw", color: "#fff", marginRight: "40rem" }}
+        sx={{
+          fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem", lg: "5rem" },
+          color: "#fff",
+          marginBottom: { xs: "20px", sm: "30px", md: "40px" },
+        }}
       >
         Hi There, I'm Umair
       </Typography>
       <Typography
         variant="subtitle1"
         sx={{
-          marginTop: "15px",
-          fontSize: "3vw",
+          fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem", lg: "3rem" },
           color: "#fff",
-          marginRight: "40rem",
+          marginBottom: { xs: "15px", sm: "20px", md: "25px" },
         }}
       >
         Front Developer
@@ -42,10 +47,10 @@ export const Hero = () => {
       <Typography
         variant="body1"
         sx={{
-          lineHeight: "2.5",
+          lineHeight: { xs: "1.5", sm: "2", md: "2.5" },
           color: "#fff",
-          textAlign: "left",
-          marginRight: "40rem",
+          textAlign: { xs: "center", sm: "center", md: "left" },
+          marginBottom: { xs: "20px", sm: "30px", md: "40px" },
         }}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptate
@@ -54,11 +59,15 @@ export const Hero = () => {
       </Typography>
       <Button
         variant="contained"
-        sx={{ marginTop: "20px", marginRight: "40rem" }}
+        sx={{
+          fontSize: { xs: "0.875rem", sm: "1rem", md: "1.25rem" },
+          padding: { xs: "8px 16px", sm: "10px 20px", md: "12px 24px" },
+          marginTop: { xs: "15px", sm: "20px", md: "25px" },
+        }}
         onClick={handleScroll}
       >
         Learn more
-        <ArrowDownwardIcon />
+        <ArrowDownwardIcon sx={{ ml: 1 }} />
       </Button>
     </Stack>
   );

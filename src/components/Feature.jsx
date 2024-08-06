@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
 import MouseIcon from "@mui/icons-material/Mouse";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
@@ -36,15 +43,18 @@ const Feature = ({ icon, title, description }) => (
   <Grid item xs={12} sm={6} md={3}>
     <Paper
       elevation={3}
-      style={{
-        padding: "16px",
+      sx={{
+        p: 2,
         textAlign: "center",
         backgroundColor: "#424242",
         color: "#ffffff",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
     >
       {icon}
-      <Typography variant="h6" color="white" fontWeight={"20px"} gutterBottom>
+      <Typography variant="h6" color="white" fontWeight="bold" gutterBottom>
         {title}
       </Typography>
       <Typography variant="body2" color="white">
@@ -54,22 +64,49 @@ const Feature = ({ icon, title, description }) => (
   </Grid>
 );
 
-const FeaturesSection = () => (
-  <Box id="features-section" color="white" py={3} px={4} paddingTop={"100px"}>
-    <Typography variant="h4" align="center" marginBottom="30px" color="error">
-      Features
-    </Typography>
-    <Grid container spacing={2}>
-      {features.map((feature, index) => (
-        <Feature
-          key={index}
-          icon={feature.icon}
-          title={feature.title}
-          description={feature.description}
-        />
-      ))}
-    </Grid>
-  </Box>
-);
+const FeaturesSection = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  return (
+    <Box
+      id="features-section"
+      sx={{
+        color: "white",
+        py: 3,
+        px: 4,
+        pt: isSmallScreen ? "50px" : "100px",
+        backgroundColor: isSmallScreen ? "#333" : "#fff",
+      }}
+    >
+      <Typography
+        variant="h4"
+        align="center"
+        sx={{
+          mb: 3,
+          color: "error.main",
+          fontSize: isSmallScreen
+            ? "1.5rem"
+            : isMediumScreen
+            ? "2rem"
+            : "2.5rem",
+        }}
+      >
+        Features
+      </Typography>
+      <Grid container spacing={2}>
+        {features.map((feature, index) => (
+          <Feature
+            key={index}
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+          />
+        ))}
+      </Grid>
+    </Box>
+  );
+};
 
 export default FeaturesSection;

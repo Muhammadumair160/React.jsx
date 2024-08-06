@@ -22,11 +22,11 @@ const services = [
 ];
 
 const ServiceCard = ({ icon, title, description, highlighted }) => (
-  <Grid item sm={4}>
+  <Grid item xs={12} sm={6} md={4}>
     <Paper
       elevation={highlighted ? 6 : 3}
-      style={{
-        padding: "24px",
+      sx={{
+        padding: { xs: "16px", sm: "24px" },
         textAlign: "center",
         backgroundColor: highlighted ? "#fff" : "transparent",
         color: highlighted ? "#000" : "#000",
@@ -37,12 +37,12 @@ const ServiceCard = ({ icon, title, description, highlighted }) => (
       }}
     >
       <Box
-        style={{
-          marginBottom: "16px",
+        sx={{
+          marginBottom: { xs: "12px", sm: "16px" },
           backgroundColor: "#FF6F61",
           borderRadius: "8px",
           display: "inline-flex",
-          padding: "16px",
+          padding: { xs: "12px", sm: "16px" },
         }}
       >
         {icon}
@@ -50,12 +50,20 @@ const ServiceCard = ({ icon, title, description, highlighted }) => (
       <Typography
         variant="h6"
         gutterBottom
-        fontWeight="30px"
-        paddingTop={"100px"}
+        sx={{
+          fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.75rem" },
+          paddingTop: { xs: "16px", sm: "24px", md: "32px" },
+        }}
       >
         {title}
       </Typography>
-      <Typography variant="body2" color="textSecondary" fontWeight="20px">
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        sx={{
+          fontSize: { xs: "0.875rem", sm: "1rem", md: "1.125rem" },
+        }}
+      >
         {description}
       </Typography>
     </Paper>
@@ -63,17 +71,30 @@ const ServiceCard = ({ icon, title, description, highlighted }) => (
 );
 
 const ServicesSection = () => (
-  <Box py={5} textAlign="center">
+  <Box
+    py={{ xs: 3, sm: 4, md: 5 }}
+    textAlign="center"
+    bgcolor="#f4f4f9"
+    sx={{ minHeight: "60vh" }}
+  >
     <Typography
       variant="overline"
       display="block"
-      fontSize="20px"
-      gutterBottom
-      style={{ color: "#FF6F61" }}
+      sx={{
+        fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2rem" },
+        color: "#FF6F61",
+        mb: { xs: 1, sm: 2, md: 3 },
+      }}
     >
       Services
     </Typography>
-    <Typography variant="h4" gutterBottom>
+    <Typography
+      variant="h4"
+      gutterBottom
+      sx={{
+        fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+      }}
+    >
       We provide the best services
     </Typography>
     <Grid container spacing={3} justifyContent="center">

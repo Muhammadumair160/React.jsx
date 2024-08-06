@@ -15,7 +15,7 @@ const paymentPlans = [
     title: "Premium",
     oldPrice: "Rs1999",
     save: "SAVE 72%",
-    price: "Rs559/mo",
+    price: "Rs559/month",
     additional: "+3 months FREE",
     renewalPrice: "Rs1099/mo when you renew",
     features: [
@@ -39,7 +39,7 @@ const paymentPlans = [
     title: "Business",
     oldPrice: "Rs2499",
     save: "SAVE 64%",
-    price: "Rs899/mo",
+    price: "Rs899/month",
     additional: "+3 months FREE",
     renewalPrice: "Rs1899/mo when you renew",
     features: [
@@ -64,7 +64,7 @@ const paymentPlans = [
     title: "Cloud Startup",
     oldPrice: "Rs5999",
     save: "SAVE 58%",
-    price: "Rs2,499/mo",
+    price: "Rs2,499/month",
     additional: "+3 months FREE",
     renewalPrice: "Rs4,499/mo when you renew",
     features: [
@@ -97,18 +97,22 @@ export const PaymentPlan = () => {
       <Typography
         variant="h3"
         textAlign="center"
-        marginTop="10rem"
+        marginTop={{ xs: 10, sm: 12, md: 18 }}
         gutterBottom
       >
         Pick Your Perfect Plan
       </Typography>
-      <Typography variant="body1" textAlign="center" marginBottom="20px">
+      <Typography
+        variant="body1"
+        textAlign="center"
+        marginBottom={{ xs: 2, sm: 4 }}
+      >
         Get started in complete confidence. Our 30-day money-back guarantee
         means it's risk-free.
       </Typography>
       <Box
         sx={{
-          padding: 4,
+          padding: { xs: 2, sm: 4 },
           maxWidth: "60vw",
           margin: "0 auto",
           backgroundColor: "#f4f7f9",
@@ -144,7 +148,7 @@ export const PaymentPlan = () => {
                       {plan.save}
                     </Typography>
                   </Box>
-                  <Typography variant="h3" component="div">
+                  <Typography variant="h4" component="div">
                     {plan.price}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -160,7 +164,7 @@ export const PaymentPlan = () => {
                         <Typography
                           variant="body2"
                           color="text.secondary"
-                          py="10px"
+                          py="5px"
                         >
                           {feature}
                         </Typography>
